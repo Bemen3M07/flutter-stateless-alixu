@@ -1,0 +1,131 @@
+
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(SayHelloApp());
+}
+
+
+class SayHelloApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Exercici 2.2 Say Hello',
+      home: SayHelloPage(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+
+class SayHelloPage extends StatefulWidget {
+  @override
+  _SayHelloPageState createState() => _SayHelloPageState();
+}
+
+
+class _SayHelloPageState extends State<SayHelloPage> {
+  final TextEditingController _nameController = TextEditingController();
+  String _message = '';
+
+
+  void _sayHello() {
+    String name = _nameController.text.trim();
+
+
+    if (name.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Introdueix el teu nom')),
+      );
+      return;
+    }
+
+
+    setState(() {
+      _message = 'HELLO $name';
+    });
+
+
+    // Mostrar un diàleg de benvinguda
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Benvingut/da!'),
+        content: Text('Hola $name'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text('Tancar'),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[800],
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // TextField
+              TextField(
+                controller: _nameController,
+                decoration: InputDecoration(
+                  labelText: 'Name',
+                  hintText: 'hola',
+                  filled: true,
+                  fillColor: Colors.grey[300],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+
+
+              // Botón SayHello
+              ElevatedButton(
+                onPressed: _sayHello,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blueGrey[900],
+                  shape: StadiumBorder(),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                ),
+                child: const Text('SayHello'),
+              ),
+              const SizedBox(height: 40),
+
+
+              // Caja con el mensaje
+              if (_message.isNotEmpty)
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    _message,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
