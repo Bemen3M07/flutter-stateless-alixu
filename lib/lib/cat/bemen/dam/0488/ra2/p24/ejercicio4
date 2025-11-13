@@ -1,0 +1,141 @@
+
+import 'dart:math';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart'; // ← para los SVG
+import 'package:fluttertoast/fluttertoast.dart'; // ← para el toast
+
+
+void main() {
+  runApp(const DiceApp());
+}
+
+
+class DiceApp extends StatelessWidget {
+  const DiceApp({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Dice Roller',
+      theme: ThemeData.dark(),
+      home: const DicePage(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+
+class DicePage extends StatefulWidget {
+  const DicePage({super.key});
+
+
+  @override
+  State<DicePage> createState() => _DicePageState();
+}
+
+
+class _DicePageState extends State<DicePage> {
+  int leftDice = 1;
+  int rightDice = 1;
+
+
+  void rollDice() {
+    setState(() {
+      leftDice = Random().nextInt(6) + 1;
+      rightDice = Random().nextInt(6) + 1;
+    });
+
+
+    if (leftDice == 6 && rightDice == 6) {
+      Fluttertoast.showToast(
+        msg: "🎉 JACKPOT!",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    }
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFF0F4C5C),
+      appBar: AppBar(
+        title: const Text("Gambling"),
+        centerTitle: true,
+        backgroundColor: Colors.teal[900],
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  'assets/dice$leftDice.svg',
+                  width: 120,
+                ),
+                const SizedBox(width: 20),
+                SvgPicture.asset(
+                  'assets/dice$rightDice.svg',
+                  width: 120,
+                ),
+              ],
+            ),
+            const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: rollDice,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueGrey[700],
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                textStyle: const TextStyle(
+                    fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              child: const Text("ROLL THE DICE"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(const MainApp());
+}
+
+
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Text('Hello World!'),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
