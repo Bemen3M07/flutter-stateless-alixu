@@ -1,0 +1,114 @@
+import 'dart:math';
+import 'package:flutter/material.dart';
+
+
+void main() {
+  runApp(SecretNumberApp());
+}
+
+
+class SecretNumberApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Exercici 2.3 Secret number',
+      home: SecretNumberPage(),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+
+class SecretNumberPage extends StatefulWidget {
+  @override
+  _SecretNumberPageState createState() => _SecretNumberPageState();
+}
+
+
+class _SecretNumberPageState extends State<SecretNumberPage> {
+  final TextEditingController _controller = TextEditingController();
+  late int _numeroSecret;
+  int _intents = 0;
+  String _missatge = '';
+
+
+  @override
+  void initState() {
+    super.initState();
+    _generarNumeroSecret();
+  }
+
+
+  void _generarNumeroSecret() {
+    final random = Random();
+    _numeroSecret = random.nextInt(101); // entre 0 y 100
+    _intents = 0;
+    _missatge = '';
+    _controller.clear();
+  }
+
+
+  void _comprovarNumero() {
+    setState(() {
+      if (_controller.text.isEmpty) {
+        _missatge = 'Introdueix un número!';
+        return;
+      }
+
+
+      final int? numeroUsuari = int.tryParse(_controller.text);
+      if (numeroUsuari == null) {
+        _missatge = 'Si us plau, introdueix un número vàlid.';
+        return;
+      }
+
+
+      _intents++;
+
+
+      if (numeroUsuari < _numeroSecret) {
+        _missatge = 'El número que busques és més gran';
+      } else if (numeroUsuari > _numeroSecret) {
+        _missatge = 'El número que busques és més petit';
+      } else {
+        _missatge = 'Has encertat!';
+      }
+    });
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Endevina el número secret')),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextField(
+              controller: _controller,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                labelText: 'Introdueix un número',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _comprovarNumero,
+              child: Text('Validar'),
+            ),
+            SizedBox(height: 20),
+            Text('Intents: $_intents'),
+            SizedBox(height: 10),
+            Text(
+              _missatge,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
