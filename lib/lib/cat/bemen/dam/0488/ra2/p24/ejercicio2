@@ -1,124 +1,104 @@
-
-import 'package:flutter/material.dart';
-
+import 'package:flutter/material.dart';//Importa la librería “material.dart”, que contiene todos los widgets y estilos del Material Design (el estilo visual de Google)
 
 void main() {
-  runApp(SayHelloApp());
+  runApp(SayHelloApp()); //Función principal que inicia la aplicación llamando a runApp con el widget raíz SayHelloApp
 }
-
-
-class SayHelloApp extends StatelessWidget {
+class SayHelloApp extends StatelessWidget { 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Exercici 2.2 Say Hello',
-      home: SayHelloPage(),
-      debugShowCheckedModeBanner: false,
+  Widget build(BuildContext context) { //Método build que construye la interfaz de usuario
+    return MaterialApp( //Widget raíz de la aplicación que utiliza Material Design
+      title: 'Exercici 2.2 Say Hello', //Título de la aplicación
+      home: SayHelloPage(), //Página principal de la aplicación
+      debugShowCheckedModeBanner: false, //Elimina la etiqueta de depuración
     );
   }
 }
-
-
-class SayHelloPage extends StatefulWidget {
+class SayHelloPage extends StatefulWidget { 
   @override
-  _SayHelloPageState createState() => _SayHelloPageState();
+  _SayHelloPageState createState() => _SayHelloPageState(); //Crea el estado asociado al widget SayHelloPage
 }
-
-
-class _SayHelloPageState extends State<SayHelloPage> {
-  final TextEditingController _nameController = TextEditingController();
-  String _message = '';
-
-
+class _SayHelloPageState extends State<SayHelloPage> {  //Define la clase de estado para SayHelloPage
+  final TextEditingController _nameController = TextEditingController(); //Controlador para el campo de texto
+  String _message = ''; //Variable de estado que almacena el mensaje a mostrar
   void _sayHello() {
-    String name = _nameController.text.trim();
-
-
-    if (name.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Introdueix el teu nom')),
+    String name = _nameController.text.trim(); //Obtiene el nombre introducido por el usuario
+    if (name.isEmpty) { //Si el nombre está vacío, muestra un mensaje de error
+      ScaffoldMessenger.of(context).showSnackBar( 
+        SnackBar(content: Text('Introdueix el teu nom')), //Mensaje de error si el campo está vacío
       );
       return;
     }
-
-
     setState(() {
-      _message = 'HELLO $name';
+      _message = 'HELLO $name'; //Actualiza el mensaje para mostrar el saludo
     });
-
-
-    // Mostrar un diàleg de benvinguda
     showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text('Benvingut/da!'),
-        content: Text('Hola $name'),
-        actions: [
+      context: context, //Contexto para mostrar el diálogo
+      builder: (context) => AlertDialog( //Diálogo de alerta que muestra el saludo
+        title: Text('Benvingut/da!'), //Título del diálogo
+        content: Text('Hola $name'), //Contenido del diálogo con el saludo
+        actions: [ //Acciones del diálogo
           TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text('Tancar'),
+            onPressed: () => Navigator.pop(context), //Cierra el diálogo al presionar el botón
+            child: Text('Tancar'), //Texto del botón para cerrar el diálogo
           ),
         ],
       ),
     );
   }
-
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { //Método build que construye la interfaz de usuario
     return Scaffold(
-      backgroundColor: Colors.grey[800],
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
+      backgroundColor: Colors.white, //Color de fondo de la aplicación
+      body: Center( //Centrar el contenido en el cuerpo de la aplicación
+        child: Padding( //Añade un padding alrededor del contenido
+          padding: const EdgeInsets.all(24.0), //Padding de 24 píxeles en todos los lados
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center, //Centrar los widgets verticalmente
             children: [
-              // TextField
               TextField(
-                controller: _nameController,
-                decoration: InputDecoration(
-                  labelText: 'Name',
-                  hintText: 'hola',
-                  filled: true,
-                  fillColor: Colors.grey[300],
+                controller: _nameController, //Controlador para el campo de texto
+                decoration: InputDecoration( //Decoración del campo de texto
+                  labelText: 'Name', //Etiqueta del campo de texto
+                  hintText: 'hola', //Texto de sugerencia dentro del campo
+                  filled: true, //Indica que el campo está relleno
+                  fillColor: Colors.grey[300], //Color de fondo del campo de texto
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(8), //Bordes redondeados para el campo de texto
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
-
-
-              // Botón SayHello
+              const SizedBox(height: 20), //Espacio vertical entre el campo de texto y el botón
               ElevatedButton(
-                onPressed: _sayHello,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueGrey[900],
-                  shape: StadiumBorder(),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                onPressed: _sayHello, //Acción al presionar el botón
+                style: ElevatedButton.styleFrom( 
+                  backgroundColor: Colors.blueGrey[900], //Color de fondo del botón
+                  foregroundColor: Colors.white, //Color del texto del botón
+                  shape: StadiumBorder(), //Bordes redondeados para el botón
+                  padding: const EdgeInsets.symmetric( 
+                    horizontal: 30, //Padding horizontal del botón
+                    vertical: 12,
+                  ),
+                  overlayColor: Colors.transparent, // Elimina tono gris
                 ),
-                child: const Text('SayHello'),
+                child: const Text('SayHello'), //Texto del botón
               ),
-              const SizedBox(height: 40),
-
-
-              // Caja con el mensaje
+              const SizedBox(height: 40), //Espacio vertical entre el botón y el mensaje
               if (_message.isNotEmpty)
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                  padding: const EdgeInsets.symmetric( 
+                    horizontal: 30, //Padding horizontal del contenedor del mensaje
+                    vertical: 20, //Padding vertical del contenedor del mensaje
+                  ),
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.grey[200], //Color de fondo del contenedor del mensaje
+                    borderRadius: BorderRadius.circular(20), //Bordes redondeados para el contenedor del mensaje
                   ),
                   child: Text(
                     _message,
                     style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
+                      fontSize: 20,   //Tamaño de fuente del mensaje
+                      fontWeight: FontWeight.bold, //Peso de fuente en negrita
+                      color: Colors.black87, //Color del texto del mensaje
                     ),
                   ),
                 ),
