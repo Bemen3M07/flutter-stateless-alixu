@@ -3,7 +3,7 @@
 
 # P2.3 Components Visuals — Stateless (RA4)
 
-Autora: Alicia Dionicio i Uxue Esteve
+Autoray: Alicia Dionicio i Uxue Esteve
 Mòdul:M0489 PROG. MULTIM. I DISP. MÒB. / M0488 DESENV. INTER
 Professor: Víctor Naranjo  
 Entorn: Flutter (Dart SDK)
