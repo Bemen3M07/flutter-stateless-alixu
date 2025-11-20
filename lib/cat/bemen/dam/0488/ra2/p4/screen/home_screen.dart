@@ -8,62 +8,60 @@ import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
-    super.key,
+    super.key, //constructor
   });
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState(); //crear estado
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
-  //lista de las 3 pages
+  int _selectedIndex = 0; //indice de la pagina seleccionada
   final List<Widget> _pages = <Widget>[
-    const Page1(),
-    const Page2(),
-    const Page3(),
+    const Page1(), //pagina 1
+    const Page2(), //pagina 2
+    const Page3(), //pagina 3
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        //barra inferior con menu de pages
-        title: const Text('Material App Bar'),
-        actions: [
+        title: const Text('Material App Bar'), //titulo de la barra
+        actions: [ //acciones de la barra
           TextButton(
-            onPressed: null,
+            onPressed: null, //sin acción
             child: Text(
-              context.watch<CounterProvider>().counter.toString(),
-              style: const TextStyle(color: Colors.white),
+              context.watch<CounterProvider>().counter.toString(), //muestra el valor de counter
+              style: const TextStyle(color: Colors.white), //color del texto
             ),
           )
-        ], // Text // TextButton
-      ), // AppBar
-      body: _pages[_selectedIndex],
+        ], 
+      ), 
+      body: _pages[_selectedIndex], //pagina seleccionada
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
+        currentIndex: _selectedIndex, //indice de la pagina seleccionada
         onTap: (index) {
           setState(() {
-            _selectedIndex = index;
+            _selectedIndex = index; //cambiar pagina seleccionada
           });
         },
         //asignacion de label y icono a cada pagina
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+          BottomNavigationBarItem( //pagina 1
+            icon: Icon(Icons.home), //icono de la pagina 1
             label: 'Page 1',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+          BottomNavigationBarItem( //pagina 2
+            icon: Icon(Icons.settings), //icono de la pagina 2
             label: 'Page 2',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+          BottomNavigationBarItem( //pagina 3
+            icon: Icon(Icons.person), //icono de la pagina 3
             label: 'Page 3',
           ),
         ],
-      ), // Center
-    ); // Scaffold
+      ), 
+    ); 
   }
 }

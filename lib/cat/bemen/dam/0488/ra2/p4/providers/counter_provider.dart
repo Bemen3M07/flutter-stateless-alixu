@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CounterProvider with ChangeNotifier {
-  //inicializar counter a 0
-  int _counter = 0;
+  int _counter = 0;   //valor inicial de counter
 
-  int get counter => _counter;
-  //funcion para sumar +1 a counter cada vez que se llame a la función
+  int get counter => _counter; //getter para obtener el valor de counter
   void increment() {
-    _counter++;
-    notifyListeners();
+    _counter++; //incrementar counter en 1
+    notifyListeners(); //notificar a los listeners que el valor ha cambiado
   }
 
   void reset() {
-    _counter = 0;
-    notifyListeners();
+    _counter = 0; //reiniciar counter a 0
+    notifyListeners(); //notificar a los listeners que el valor ha cambiado
   }
 }
