@@ -13,7 +13,7 @@ class _Page2State extends State<Page2> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      //se muestra el valor de counter de page 1
+      //MOSTRAMOS EL VALOR DEL CONTADOR
       child: Text(
         context.watch<CounterProvider>().counter.toString(),
         style: const TextStyle(fontSize: 50),

@@ -16,7 +16,7 @@ class _Page3State extends State<Page3> {
 
     return Column(
       
-      //se muestra el valor de counter de page 1
+      //SE MUESTRA EL VALOR DEL CONTADOR Y BOTÓN PARA RESETEAR
       children: [Text(
         context.watch<CounterProvider>().counter.toString(),
         style: const TextStyle(fontSize: 50),
