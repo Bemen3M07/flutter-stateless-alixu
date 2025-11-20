@@ -23,7 +23,7 @@ import 'ejercicio6.dart';
 import 'main_ej7.dart';
 
 /// =====================
-/// 🚀 PUNT D'ENTRADA
+/// PUNT D'ENTRADA
 /// =====================
 /// `main()` executa la funció `runEjercicio8()` que inicia l'app.
 
@@ -31,7 +31,7 @@ void main() => runEjercicio8();
 void runEjercicio8() => runApp(const MyApp());
 
 /// ===============================
-/// 🧠 PROVIDER (Gestió de Navegació)
+/// PROVIDER (Gestió de Navegació)
 /// ===============================
 /// Aquesta classe notifica canvis a les pantalles quan es modifica l'estat.
 /// Controla:
@@ -63,7 +63,7 @@ class NavigationProvider with ChangeNotifier {
 }
 
 /// =====================
-/// 🏠 APP PRINCIPAL
+/// APP PRINCIPAL
 /// =====================
 /// `ChangeNotifierProvider` injecta el provider a tota l’aplicació.
 /// D’aquesta forma qualsevol widget pot escoltar canvis sense passar paràmetres manualment.
@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
 }
 
 /// =======================================
-/// 🌐 HANDLER DE NAVEGACIÓ INFERIOR (BOTTOM BAR)
+/// HANDLER DE NAVEGACIÓ INFERIOR (BOTTOM BAR)
 /// =======================================
 /// Gestiona quina pàgina mostrar: Stateless o Stateful.
 /// Usa el provider per canviar i reconstruir la UI.
@@ -116,7 +116,7 @@ class NavigationHandler extends StatelessWidget {
 }
 
 /// ===========================
-/// 📄 PÀGINA DELS EXERCICIS STATELESS
+/// PÀGINA DELS EXERCICIS STATELESS
 /// ===========================
 /// Conté un selector superior amb Dropdown + mostra del widget escollit.
 
