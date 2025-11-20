@@ -61,14 +61,14 @@ obrint l’arxiu corresponent i fent clic a “Run”.
 
 Tots els exercicis funcionen correctament.
 
-# 📌 Exercicis P4 – Widgets Stateful (DAM / Flutter)
+# Exercicis P4 – Widgets Stateful (DAM / Flutter)
 
 Aquesta carpeta conté els exercicis corresponents a la pràctica **P4**, on treballem amb **StatefulWidget** a Flutter.  
 A diferència dels widgets Stateless, els widgets Stateful **mantenen i actualitzen el seu estat durant l’execució de l’aplicació** cada cop que hi ha un canvi provocat per l’usuari o pel sistema.
 
 ---
 
-## 🧩 Objectiu de la Pràctica
+## Objectiu de la Pràctica
 
 - Entendre la diferència entre **StatelessWidget** i **StatefulWidget**.
 - Gestionar estats interns mitjançant **setState()**.
@@ -78,7 +78,7 @@ A diferència dels widgets Stateless, els widgets Stateful **mantenen i actualit
 
 ---
 
-## 📂 Contingut d’Exercicis (P4)
+## Contingut d’Exercicis (P4)
 
 | Nº | Arxiu | Descripció del concepte |
 |---:|-------|-------------------------|
@@ -92,7 +92,7 @@ A diferència dels widgets Stateless, els widgets Stateful **mantenen i actualit
 
 ---
 
-## 🛠️ Ús del `setState()`
+## Ús del `setState()`
 
 En widgets Stateful, **setState()** és el mètode que informa a Flutter que l’estat ha canviat i cal reconstruir la UI. Exemple bàsic:
 
