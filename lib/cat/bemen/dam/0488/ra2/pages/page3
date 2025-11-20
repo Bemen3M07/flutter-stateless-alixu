@@ -1,7 +1,11 @@
-// **RUTA CORREGIDA**
-import '../providers/counter_provider.dart';
+// EJEMPLO: lib/pages/page1.dart
+
+// ANTES: import 'package:empty/cat/bemen/.../counter_provider.dart';
+import '../providers/counter_provider.dart'; // CORREGIDO
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+
 
 class Page3 extends StatefulWidget {
   const Page3({super.key});

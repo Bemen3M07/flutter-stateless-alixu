@@ -28,7 +28,7 @@ class _Ejercicio4State extends State<Ejercicio4> {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text(
-          '🎉 JACKPOT! 🎉',
+          'JACKPOT!',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,

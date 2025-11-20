@@ -1,8 +1,10 @@
-// **RUTAS CORREGIDAS**
-import '../pages/page1.dart';
-import '../pages/page2.dart';
-import '../pages/page3.dart';
-import '../providers/counter_provider.dart';
+// lib/screen/home_screen.dart
+
+// ANTES: import 'package:empty/cat/bemen/.../page1.dart';
+import '../pages/page1.dart'; // CORREGIDO
+import '../pages/page2.dart'; // CORREGIDO
+import '../pages/page3.dart'; // CORREGIDO
+import '../providers/counter_provider.dart'; // CORREGIDO
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
