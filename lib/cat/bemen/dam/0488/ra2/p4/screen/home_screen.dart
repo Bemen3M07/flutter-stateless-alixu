@@ -1,11 +1,9 @@
-// lib/screen/home_screen.dart
 
-// ANTES: import 'package:empty/cat/bemen/.../page1.dart';
-import '../pages/page1.dart'; // CORREGIDO
-import '../pages/page2.dart'; // CORREGIDO
-import '../pages/page3.dart'; // CORREGIDO
-import '../providers/counter_provider.dart'; // CORREGIDO
 import 'package:flutter/material.dart';
+import 'package:flutter_stateless_alixu/cat/bemen/dam/0488/ra2/p4/pages/page1.dart';
+import 'package:flutter_stateless_alixu/cat/bemen/dam/0488/ra2/p4/pages/page2.dart';
+import 'package:flutter_stateless_alixu/cat/bemen/dam/0488/ra2/p4/pages/page3.dart';
+import 'package:flutter_stateless_alixu/cat/bemen/dam/0488/ra2/p4/providers/counter_provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  // lista de las 3 pages
+  //lista de las 3 pages
   final List<Widget> _pages = <Widget>[
     const Page1(),
     const Page2(),
@@ -30,19 +28,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // barra inferior con menu de pages
+        //barra inferior con menu de pages
         title: const Text('Material App Bar'),
         actions: [
           TextButton(
             onPressed: null,
             child: Text(
-              // Lectura del contador para mostrarlo en la App Bar
               context.watch<CounterProvider>().counter.toString(),
               style: const TextStyle(color: Colors.white),
             ),
           )
-        ],
-      ),
+        ], // Text // TextButton
+      ), // AppBar
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
@@ -51,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
             _selectedIndex = index;
           });
         },
-        // asignacion de label y icono a cada pagina
+        //asignacion de label y icono a cada pagina
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -66,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Page 3',
           ),
         ],
-      ),
-    );
+      ), // Center
+    ); // Scaffold
   }
 }

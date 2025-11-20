@@ -1,5 +1,4 @@
-// **RUTA CORREGIDA**
-import '../providers/counter_provider.dart';
+import 'package:flutter_stateless_alixu/cat/bemen/dam/0488/ra2/p4/providers/counter_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,15 +15,14 @@ class _Page1State extends State<Page1> {
     return Center(
       child: Column(
         children: [
-          // se muestra el valor de counter (lectura con .watch)
+          //se muestra el valor de counter
           Text(
             context.watch<CounterProvider>().counter.toString(),
             style: const TextStyle(fontSize: 50),
           ),
-          // boton que llama a función para sumar 1 al contador
+          //boton que llama a función para sumar 1 al contador
           ElevatedButton(
               onPressed: () {
-                // modificación con .read
                 context.read<CounterProvider>().increment();
               },
               child: const Text('Sumar'))

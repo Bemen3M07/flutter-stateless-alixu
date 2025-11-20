@@ -1,11 +1,6 @@
-// EJEMPLO: lib/pages/page1.dart
-
-// ANTES: import 'package:empty/cat/bemen/.../counter_provider.dart';
-import '../providers/counter_provider.dart'; // CORREGIDO
+import 'package:flutter_stateless_alixu/cat/bemen/dam/0488/ra2/p4/providers/counter_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-
 
 class Page3 extends StatefulWidget {
   const Page3({super.key});
@@ -17,12 +12,27 @@ class Page3 extends StatefulWidget {
 class _Page3State extends State<Page3> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      // se muestra el valor de counter (lectura con .watch)
-      child: Text(
+
+
+    return Column(
+      
+      //se muestra el valor de counter de page 1
+      children: [Text(
         context.watch<CounterProvider>().counter.toString(),
         style: const TextStyle(fontSize: 50),
       ),
+      ElevatedButton(
+        onPressed: () {
+          context.read<CounterProvider>().reset();
+        },
+        child: const Text('Resetear'),
+      )
+      ],
     );
+
+
   }
+
+
 }
+
