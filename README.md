@@ -99,4 +99,4 @@ En widgets Stateful, **setState()** és el mètode que informa a Flutter que l�
 ```dart
 setState(() {
   _counter++;
-}) ;
+}  ) ;
